@@ -3,21 +3,23 @@ const inputTitle=document.getElementById("inputTitle");
 const inputAuthor=document.getElementById("inputAuthor");
 const divBooks=document.querySelector(".books");
 const form = document.getElementsByTagName('form')[0];
+const buttonRemove=document.querySelector('.remove');
 var bookTemplate=`"<div>
     <label id="title">{book.title}</label>
     <label id="author">{book.author}</label>
-    <input type="button" name="remove" id="{book.id}">
+    <button type="button" class="remove" id="{book.id}" onclick="removeBook(this.id);">Remove</button>
     <hr>
-</div>"`;
-const objectBook= {};
-objectBook.author;
-objectBook.title;
-function Add(author, title)
+</div>`;
+// const objectBook= {};
+// objectBook.author;
+// objectBook.title;
+function Book(id, author, title)
 {
+    this.id=id;
     this.title=title;
     this.author=author;
 };
-objectBook.add=Add();
+// objectBook.add=Add();
 var booksCollection=[];
 
 
@@ -46,9 +48,14 @@ function storageAvailable(type) {
   }
 function AddBook() {
     // const book = { author: inputAuthor.value, title: inputTitle.value };
-    objectBook.Add(inputAuthor.value, inputTitle.value)
+    id=0;
      books = localStorage.getItem('books');
-    const booksCollection = JSON.parse(books);
+     if (books!=null){
+         booksCollection = JSON.parse(books);
+          id=booksCollection.length;
+     }
+    
+     const objectBook=new Book(id, inputAuthor.value, inputTitle.value)
     booksCollection.push(objectBook);
     
     books = JSON.stringify(booksCollection);
@@ -63,11 +70,15 @@ form.addEventListener('submit', () => {
 function setBooksForm() {
     books = localStorage.getItem('books');
     const booksCollection = JSON.parse(books);
+    var allBooks='';
     for (let index = 0; index < booksCollection.length; index = index + 1) {
         const book = booksCollection[index];
-        divBooks.innerHTML = bookTemplate.replace('{book.title}', book.title)
+        allBooks=allBooks + bookTemplate
+        .replace('{book.title}', book.title)
         .replace('{book.author}', book.author)
+        .replace('{book.id}', book.id)
     }
+    divBooks.innerHTML=allBooks;
 }
     
     
@@ -78,5 +89,23 @@ function setBooksForm() {
       }
     }
   });
+function removeBook(id){
+    books = localStorage.getItem('books');
+    if (books!=null){
+        booksCollection = JSON.parse(books);
+    } 
+    booksCollectionResult= booksCollection.filter(bk=> bk.id!=id);
+     books = JSON.stringify(booksCollectionResult);
+    localStorage.setItem('books', books);
+}
+//   if (document.body.contains(buttonRemove)) {
+//     buttonRemove.addEventListener('click', ()=>{
+//         if (storageAvailable('localStorage')) {
+//             if (localStorage.getItem('books')) {
+//               removeBook(bottonRemote.id);
+//             }
+//           }
+//     })
+//   }
 
 
