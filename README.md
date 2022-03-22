@@ -12,8 +12,7 @@
 
 ## Built With
 
-- HTML, CSS
-- Vanilla Javascript
+- Technologies used: HTML, CSS, Javascript
 
 ## Live Demo (if available)
 
@@ -38,11 +37,11 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@twitterhandle](https://twitter.com/banzamarq10)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/mark-rubanza-anderson-4399a2211/)
 
-👤 **Author2**
+👤 **Elio Cortés**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@NeckerFree](https://github.com/NeckerFree)
+- Twitter: [@ElioCortesM](https://twitter.com/ElioCortesM)
+- LinkedIn: [elionelsoncortes](https://www.linkedin.com/in/elionelsoncortes/)
 
 ## 🤝 Contributing
 
@@ -53,12 +52,6 @@ Feel free to check the [issues page](https://github.com/banzaman/Awesome-books/i
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
 
 ## 📝 License
 

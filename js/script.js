@@ -47,7 +47,7 @@ function AddBook() {
   let books = localStorage.getItem('books');
   if (books != null) {
     booksCollection = JSON.parse(books);
-    const ids = booksCollection.map((object) => object.id);
+    const ids = booksCollection.map((object) => parseInt(object.id, 10));
     const maxId = Math.max(...ids);
     id = maxId + 1;
   }
@@ -65,10 +65,13 @@ function removeBook(id) {
     if (books != null) {
       booksCollection = JSON.parse(books);
     }
-    const booksCollectionResult = booksCollection.filter((bk) =>parseInt(bk.id, 10) !== parseInt(id, 10));
-    booksCollection.splice();
-    books = JSON.stringify(booksCollectionResult);
-    localStorage.setItem('books', books);
+    const booksResult = booksCollection.filter((bk) => parseInt(bk.id, 10) !== parseInt(id, 10));
+    if (booksResult.length === 0) {
+      localStorage.removeItem('books');
+    } else {
+      books = JSON.stringify(booksResult);
+      localStorage.setItem('books', books);
+    }
     window.location.reload();
   }
 }
@@ -82,7 +85,7 @@ function setBooksForm() {
     allBooks += bookTemplate
       .replace('{book.title}', book.title)
       .replace('{book.author}', book.author)
-      .replace('{book.id}', book.id);
+      .replace('{book.id}', parseInt(book.id, 10));
   }
   divBooks.innerHTML = allBooks;
 }
