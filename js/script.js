@@ -1,35 +1,36 @@
-const addButton= document.getElementById("addButton");
-const inputTitle=document.getElementById("inputTitle");
-const inputAuthor=document.getElementById("inputAuthor");
-const divBooks=document.querySelector(".books");
+/**
+ * Declarations
+ */
+const inputTitle = document.getElementById('inputTitle');
+const inputAuthor = document.getElementById('inputAuthor');
+const divBooks = document.querySelector('.books');
 const form = document.getElementsByTagName('form')[0];
-const buttonRemove=document.querySelector('.remove');
-var bookTemplate=`<div><label id="title">{book.title}</label><label id="author">{book.author}</label>
+let booksCollection = [];
+const bookTemplate = `<div class="bookRow"><label id="title">{book.title}</label><label id="author">{book.author}</label>
     <button type="button" class="remove" id="{book.id}" onclick="removeBook(this.id);">Remove</button>
-    <hr></div>`;
+    </div><hr>`;
 
-function Book(id, author, title)
-{
-    this.id=id;
-    this.title=title;
-    this.author=author;
-};
-
-var booksCollection=[];
-
+/**
+     * Functions
+     */
+function Book(id, author, title) {
+  this.id = id;
+  this.title = title;
+  this.author = author;
+}
 
 function storageAvailable(type) {
-    let storage;
-    try {
-      storage = window[type];
-      const x = '__storage_test__';
-      storage.setItem(x, x);
-      storage.removeItem(x);
-      return true;
-    } catch (e) {
-      return e instanceof DOMException && (
+  let storage;
+  try {
+    storage = window[type];
+    const x = '__storage_test__';
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  } catch (e) {
+    return e instanceof DOMException && (
       // everything except Firefox
-        e.code === 22
+      e.code === 22
             // Firefox
             || e.code === 1014
             // test name field too, because code might not be present
@@ -39,59 +40,65 @@ function storageAvailable(type) {
             || e.name === 'NS_ERROR_DOM_QUOTA_REACHED')
             // acknowledge QuotaExceededError only if there's something already stored
             && (storage && storage.length !== 0);
-    }
   }
+}
 function AddBook() {
-  id=0;
-  books = localStorage.getItem('books');
-  if (books!=null){
-      booksCollection = JSON.parse(books);
-      const ids = booksCollection.map(object => {return object.id;});
-      const maxId = Math.max(...ids);
-       id=maxId+1;
+  let id = 1;
+  let books = localStorage.getItem('books');
+  if (books != null) {
+    booksCollection = JSON.parse(books);
+    const ids = booksCollection.map((object) => object.id);
+    const maxId = Math.max(...ids);
+    id = maxId + 1;
   }
-    
-     const objectBook=new Book(id, inputAuthor.value, inputTitle.value)
-    booksCollection.push(objectBook);
-    
-    books = JSON.stringify(booksCollection);
-    localStorage.setItem('books', books);
-}
-form.addEventListener('submit', () => {
-    if (storageAvailable('localStorage')) {
-     AddBook();
-    }
-  });
 
-function setBooksForm() {
-    books = localStorage.getItem('books');
-    const booksCollection = JSON.parse(books);
-    var allBooks='';
-    for (let index = 0; index < booksCollection.length; index = index + 1) {
-        const book = booksCollection[index];
-        allBooks=allBooks + bookTemplate
-        .replace('{book.title}', book.title)
-        .replace('{book.author}', book.author)
-        .replace('{book.id}', book.id)
-    }
-    divBooks.innerHTML=allBooks;
+  const objectBook = new Book(id.toString(), inputAuthor.value, inputTitle.value);
+  booksCollection.push(objectBook);
+
+  books = JSON.stringify(booksCollection);
+  localStorage.setItem('books', books);
 }
-    
-    
-  window.addEventListener('load', () => {
-    if (storageAvailable('localStorage')) {
-      if (localStorage.getItem('books')) {
-        setBooksForm();
-      }
+
+function removeBook(id) {
+  if (id > 0) {
+    let books = localStorage.getItem('books');
+    if (books != null) {
+      booksCollection = JSON.parse(books);
     }
-  });
-function removeBook(id){
-    books = localStorage.getItem('books');
-    if (books!=null){
-        booksCollection = JSON.parse(books);
-    } 
-    booksCollectionResult= booksCollection.filter(bk=> bk.id!=id);
-     books = JSON.stringify(booksCollectionResult);
+    const booksCollectionResult = booksCollection.filter((bk) => bk.id !== parseInt(id, 10));
+    booksCollection.splice();
+    books = JSON.stringify(booksCollectionResult);
     localStorage.setItem('books', books);
-    location.reload();
+    window.location.reload();
+  }
 }
+function setBooksForm() {
+  removeBook(-1);
+  const books = localStorage.getItem('books');
+  const booksCollection = JSON.parse(books);
+  let allBooks = '';
+  for (let index = 0; index < booksCollection.length; index += 1) {
+    const book = booksCollection[index];
+    allBooks += bookTemplate
+      .replace('{book.title}', book.title)
+      .replace('{book.author}', book.author)
+      .replace('{book.id}', book.id);
+  }
+  divBooks.innerHTML = allBooks;
+}
+
+/**
+ * Events
+ */
+form.addEventListener('submit', () => {
+  if (storageAvailable('localStorage')) {
+    AddBook();
+  }
+});
+window.addEventListener('load', () => {
+  if (storageAvailable('localStorage')) {
+    if (localStorage.getItem('books')) {
+      setBooksForm();
+    }
+  }
+});
