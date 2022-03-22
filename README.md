@@ -33,9 +33,9 @@ To get a local copy up and running follow these simple example steps.
 
 👤 **Mark Rubanza**
 
-- GitHub: [@githubhandle](https://github.com/banzaman)
-- Twitter: [@twitterhandle](https://twitter.com/banzamarq10)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/mark-rubanza-anderson-4399a2211/)
+- GitHub: [@Banzaman](https://github.com/banzaman)
+- Twitter: [@banzamarq](https://twitter.com/banzamarq10)
+- LinkedIn: [mark Rubanza Anderson](https://www.linkedin.com/in/mark-rubanza-anderson-4399a2211/)
 
 👤 **Elio Cortés**
 
