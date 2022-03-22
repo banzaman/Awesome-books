@@ -65,7 +65,7 @@ function removeBook(id) {
     if (books != null) {
       booksCollection = JSON.parse(books);
     }
-    const booksCollectionResult = booksCollection.filter((bk) => bk.id !== parseInt(id, 10));
+    const booksCollectionResult = booksCollection.filter((bk) =>parseInt(bk.id, 10) !== parseInt(id, 10));
     booksCollection.splice();
     books = JSON.stringify(booksCollectionResult);
     localStorage.setItem('books', books);
