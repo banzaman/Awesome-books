@@ -22,15 +22,29 @@ h1,
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  border: solid #000 3px;
+  border-radius: 3px;
+  max-width: 850px;
+  margin: auto;
 }
-
+  
 .bookRow {
   display: flex;
   flex-direction: row;
-}
+  min-height: 30px;
+  padding: 0 10px;
+  justify-content: space-between;
+  align-items: center;
+  }
 
 .remove {
   width: min-content;
+  align-self: flex-end;
+  font-weight: bold;
+  padding: 3px 8px;
+  border: solid #000 3px;
+  border-radius: 3px;
+  box-shadow: 2px 2px #000;
 }
 
 hr {
