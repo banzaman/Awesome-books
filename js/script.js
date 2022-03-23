@@ -5,19 +5,65 @@ const inputTitle = document.getElementById('inputTitle');
 const inputAuthor = document.getElementById('inputAuthor');
 const divBooks = document.querySelector('.books');
 const form = document.getElementsByTagName('form')[0];
-let booksCollection = [];
-const bookTemplate = `<div class="bookRow"><label id="title">{book.title}</label><label id="author">{book.author}</label>
+
+const bookTemplate = `<div class="bookRow"><label id="bookEntry">"{book.title}" by {book.author}</label>
     <button type="button" class="remove" id="{book.id}" onclick="removeBook(this.id);">Remove</button>
     </div><hr>`;
 
+class BookStore {
+  #books;
+  #itemName;
+  #booksCollection = [];
+  constructor(itemName) {
+    this.#itemName = itemName;
+  }
+  addBook(author, title) {
+    let id = 1;
+    this.#booksCollection =this.getBookStorage();
+    if (this.#booksCollection !== null) {
+      const ids = this.#booksCollection.map((object) => parseInt(object.id, 10));
+      const maxId = Math.max(...ids);
+      id = maxId + 1;
+    }
+    const objectBook = { 'id': id.toString(), 'author': author, 'title': title };
+    this.setBookStorage(objectBook);
+ }
+
+  removeBook(id) {
+    if (id > 0) {
+      this.#booksCollection = this.getBookStorage();
+      const booksResult = this.#booksCollection.filter((bk) => parseInt(bk.id, 10) !== parseInt(id, 10));
+        this.removeBookStorage(booksResult);
+      }
+  }
+  getBookStorage() {
+    this.#books = localStorage.getItem(this.#itemName);
+    return (this.#books === null) ? null : JSON.parse(this.#books);
+  }
+  setBookStorage(objectBook) {
+    if (this.#booksCollection===null)
+    {
+      this.#booksCollection=[];  
+    }
+    this.#booksCollection.push(objectBook);
+    this.#books = JSON.stringify(this.#booksCollection);
+    localStorage.setItem(this.#itemName, this.#books);
+  }
+  removeBookStorage(booksResult) {
+    if (booksResult.length === 0) {
+      localStorage.removeItem(this.#itemName);
+    } else {
+      this.#books = JSON.stringify(booksResult);
+      localStorage.setItem(this.#itemName, this.#books);
+    }
+  }
+}
+
+var bookStore = new BookStore('books');
 /**
      * Functions
      */
-function Book(id, author, title) {
-  this.id = id;
-  this.title = title;
-  this.author = author;
-}
+
 
 function storageAvailable(type) {
   let storage;
@@ -31,77 +77,51 @@ function storageAvailable(type) {
     return e instanceof DOMException && (
       // everything except Firefox
       e.code === 22
-            // Firefox
-            || e.code === 1014
-            // test name field too, because code might not be present
-            // everything except Firefox
-            || e.name === 'QuotaExceededError'
-            // Firefox
-            || e.name === 'NS_ERROR_DOM_QUOTA_REACHED')
-            // acknowledge QuotaExceededError only if there's something already stored
-            && (storage && storage.length !== 0);
+      // Firefox
+      || e.code === 1014
+      // test name field too, because code might not be present
+      // everything except Firefox
+      || e.name === 'QuotaExceededError'
+      // Firefox
+      || e.name === 'NS_ERROR_DOM_QUOTA_REACHED')
+      // acknowledge QuotaExceededError only if there's something already stored
+      && (storage && storage.length !== 0);
   }
 }
-function AddBook() {
-  let id = 1;
-  let books = localStorage.getItem('books');
-  if (books != null) {
-    booksCollection = JSON.parse(books);
-    const ids = booksCollection.map((object) => parseInt(object.id, 10));
-    const maxId = Math.max(...ids);
-    id = maxId + 1;
-  }
 
-  const objectBook = new Book(id.toString(), inputAuthor.value, inputTitle.value);
-  booksCollection.push(objectBook);
-
-  books = JSON.stringify(booksCollection);
-  localStorage.setItem('books', books);
-}
 
 function removeBook(id) {
   if (id > 0) {
-    let books = localStorage.getItem('books');
-    if (books != null) {
-      booksCollection = JSON.parse(books);
-    }
-    const booksResult = booksCollection.filter((bk) => parseInt(bk.id, 10) !== parseInt(id, 10));
-    if (booksResult.length === 0) {
-      localStorage.removeItem('books');
-    } else {
-      books = JSON.stringify(booksResult);
-      localStorage.setItem('books', books);
-    }
+    bookStore.removeBook(id);
     window.location.reload();
   }
 }
 function setBooksForm() {
   removeBook(-1);
-  const books = localStorage.getItem('books');
-  const booksCollection = JSON.parse(books);
+  const booksCollection = bookStore.getBookStorage();
   let allBooks = '';
   for (let index = 0; index < booksCollection.length; index += 1) {
+    const isRowPair = index % 2;
     const book = booksCollection[index];
     allBooks += bookTemplate
       .replace('{book.title}', book.title)
       .replace('{book.author}', book.author)
-      .replace('{book.id}', parseInt(book.id, 10));
+      .replace('{book.id}', parseInt(book.id, 10))
+      .replace('bookRow', (isRowPair === 0) ? 'bookRow' : 'bookRow alternateRow');
   }
   divBooks.innerHTML = allBooks;
 }
 
-/**
+/** 
  * Events
  */
 form.addEventListener('submit', () => {
   if (storageAvailable('localStorage')) {
-    AddBook();
+    bookStore.addBook(inputAuthor.value, inputTitle.value);
   }
 });
 window.addEventListener('load', () => {
   if (storageAvailable('localStorage')) {
-    if (localStorage.getItem('books')) {
-      setBooksForm();
-    }
+    setBooksForm();
   }
 });

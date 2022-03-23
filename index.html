@@ -1,62 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Awesome Books</title>
-  </head>
-  <body>
-    <header class="flex-container"><h1>All awesome Books</h1></header>
-    <section class="flex-container">
-      <div class="books">
-        <div class="bookRow">
-          <label id="title">book.title</label
-          ><label id="author">book.author</label>
-          <button
-            type="button"
-            class="remove"
-            id="book.id"
-            onclick="removeBook(this.id);"
-          >
-            Remove
-          </button>
-        </div>
-        <div class="bookRow alternateRow">
-          <label id="title">book.title</label
-          ><label id="author">book.author</label>
-          <button
-            type="button"
-            class="remove"
-            id="book.id"
-            onclick="removeBook(this.id);"
-          >
-            Remove
-          </button>
-        </div>
-      </div>
-    </section>
-    <section class="addbookform-section" id="addnew">
-      <h2>Add a new book</h2>
-      <form id="add" class="addBook" method="post">
-        <input
-          id="inputTitle"
-          type="text"
-          placeholder="title"
-          maxlength="100"
-          required
-        />
-        <input
-          id="inputAuthor"
-          type="text"
-          placeholder="author"
-          maxlength="100"
-          required
-        />
-        <input id="addBtn" type="submit" name="add" value="Add" />
-      </form>
-    </section>
-    <script src="./js/script.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Awesome Books</title>
+</head>
+
+<body>
+  <header class="flex-container">
+    <h1>All awesome Books</h1>
+  </header>
+  <section class="flex-container">
+    <div class="books">
+    </div>
+  </section>
+  <section class="addbookform-section" id="addnew">
+    <h2>Add a new book</h2>
+    <form id="add" class="addBook" method="get">
+      <input id="inputTitle" type="text" placeholder="Title" maxlength="100" required />
+      <input id="inputAuthor" type="text" placeholder="Author" maxlength="100" required />
+      <input id="addBtn" type="submit" name="add" value="Add" />
+    </form>
+  </section>
+  <script src="./js/script.js"></script>
+</body>
+
 </html>
