@@ -1,33 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Awesome Books</title>
-</head>
-<body>
-    <header><h1>Awesome Books</h1></header>
-    <section id="sectionGrid">
-        <div class="books">
-        </div>
-    </section>
-    <section id="sectionInput">
-        <br>
-        <hr>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="logo">Awesome books</h1>
+      <nav class="nav">
+        <ul class="navlist">
+          <li class="navitem">
+            <a class="navlink" href="#sectionGrid" id="link1">List</a>
+          </li>
+          <li class="navitem">
+            <a class="navlink" href="#sectionInput" id="link2">Add new</a>
+          </li>
+          <li class="navitem">
+            <a class="navlink" href="#contact" id="link3">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="date"></div>
+    <main>
+      <section id="sectionGrid" class="" >
+        <h1>All Awesome Books</h1>
+        <div class="books"></div>
+      </section>
+      <section id="sectionInput" class="">
+        <br />
         <h1>Add a new book</h1>
         <form method="get">
-            <div class="formContent">
-                <div class="inputs"> 
-                <input id="inputTitle" type="text" placeholder="Title" maxlength="100" required>
-               <input  id="inputAuthor" type="text" placeholder="Author" maxlength="100" required>
+          <div class="formContent">
+            <div class="inputs">
+              <input id="inputTitle" type="text" placeholder="Title" maxlength="100" required />
+              <input id="inputAuthor" type="text" placeholder="Author" maxlength="100" required />
             </div>
-<div class="buttonInput"><button id="submit" type="submit" name="add" >Add</button></div>
-            
-        </div>
+            <div class="buttonInput">
+              <button id="submit" type="submit" name="add">Add</button>
+            </div>
+          </div>
         </form>
-    </section>
+      </section>
+      <section id="contact">
+        <div class="contactsection">
+          <h1>Contact information</h1>
+          <p>Do you have any questions or you just want to say "Hello"?</p>
+          <div class="info">
+            <ul>
+              <li class="contactlist">Our e-mail: mail@mail.com</li>
+              <li class="contactlist">Our phone number: 785776767</li>
+              <li class="contactlist">Our address: Streetname 22, 84036 City, Country</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <h1 class="logo">Copyright</h1>
+      <nav class="nav">
+        <p>.......</p>
+      </nav>
+    </footer>
     <script src="./js/script.js"></script>
-</body>
+  </body>
 </html>
