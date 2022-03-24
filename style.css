@@ -73,20 +73,21 @@ hr {
 }
 
 .navlink {
-  font-size: 30px;
+  font-size: 20px;
   font-family: cursive;
   padding: 12px;
   text-decoration: none;
   color: initial;
 }
 
+/*
 .navlink1 {
   font-size: 30px;
   font-family: cursive;
   padding: 12px;
   text-decoration: none;
   color: initial;
-}
+} */
 
 .navlink:active {
   color: purple;
@@ -128,10 +129,10 @@ footer {
   margin-bottom: 10%;
 }
 
-.activate{
-  display: block;
-}
-
 .deactivate {
   display: none;
+}
+
+.visited {
+  color: blue;
 }
