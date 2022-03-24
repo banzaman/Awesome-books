@@ -8,7 +8,18 @@
     <title>Awesome Books</title>
 </head>
 <body>
-    <header><h1>Awesome Books</h1></header>
+    <header class="header">
+        <h1 class="logo">Awesome books</h1>
+        <nav class="nav">
+          <ul class="navlist">
+            <li class="navitem"><a class="navlink" href="#sectionGrid">List</a></li>
+            <li class="navitem"><a class="navlink" href="#sectionInput">Add new</a></li>
+            <li class="navitem"><a class="navlink" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+    </header>
+    <main><h1>Awesome Books</h1></main>
+    <div class="date"></div>
     <section id="sectionGrid">
         <div class="books">
         </div>
@@ -28,6 +39,21 @@
         </div>
         </form>
     </section>
+    <section class="contactsection section" id="contact">
+        <h2>Contact information</h2>
+        <p>Do you have any questions or you just want to say "hello"?</p>
+        <ul>
+          <li class="contactlist">Our email: mail@mail.com</li>
+          <li class="contactlist">Our phonme number: 785776767</li>
+          <li class="contactlist">Our address: Streetname 22, 84036 City, Country</li>
+        </ul>
+      </section>
+      <footer>
+        <h1 class="logo">Copyright</h1>
+        <nav class="nav">
+          <p>.......</p>
+        </nav>
+    </footer>
     <script src="./js/script.js"></script>
 </body>
 </html>

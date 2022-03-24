@@ -55,3 +55,84 @@ hr {
   margin-left: auto;
   margin-right: auto;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid grey;
+}
+
+.navlist {
+  list-style-type: none;
+  display: inline-flex;
+}
+
+.navitem {
+  border-left: 2px solid grey;
+}
+
+.navlink {
+  font-size: 30px;
+  font-family: cursive;
+  padding: 12px;
+  text-decoration: none;
+  color: initial;
+}
+
+.navlink1 {
+  font-size: 30px;
+  font-family: cursive;
+  padding: 12px;
+  text-decoration: none;
+  color: initial;
+}
+
+.navlink:active {
+  color: purple;
+}
+
+.date {
+  text-align: right;
+  padding: 15px 10px;
+}
+
+.main {
+  margin-top: 5%;
+}
+
+.addbookform,
+.contactsection {
+  margin-top: 10%;
+}
+
+.logo,
+.nav {
+  padding-left: 2%;
+}
+
+.contactlist {
+  list-style-type: none;
+}
+
+footer {
+  border: 3px solid grey;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.contactsection {
+  margin-bottom: 10%;
+}
+
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+  

@@ -134,3 +134,7 @@ window.addEventListener('load', () => {
     setBooksForm();
   }
 });
+
+//  Date
+const datePlace = document.querySelector('.date');
+datePlace.innerHTML = Date();
