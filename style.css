@@ -1,79 +1,57 @@
-.header {
-  justify-content: center;
-}
-
 body {
   text-align: center;
-  position: relative;
 }
 
-h1,
-  h2 {
-    font-family: cursive;
-    font-size: 30px;
-  }
-  
-.flex-container {
-  display: flex;
-  justify-content: center;
-}
-
-.books {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  border: solid #000 3px;
-  border-radius: 3px;
-  max-width: 850px;
-  margin: auto;
-}
-  
 .bookRow {
   display: flex;
-  flex-direction: row;
-  min-height: 30px;
-  padding: 0 10px;
   justify-content: space-between;
-  align-items: center;
-  }
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
 .remove {
   width: min-content;
-  align-self: flex-end;
-  font-weight: bold;
-  padding: 3px 8px;
-  border: solid #000 3px;
-  border-radius: 3px;
-  box-shadow: 2px 2px #000;
 }
 
 hr {
-  max-width: 400px;
-  margin-left: 0;
+  max-width: 100px;
+  margin-top: 20px;
 }
 
-#add {
-  width: 300px;
-  gap: 15px;
+.alternateRow {
+  background-color: #ddd;
+}
+
+.books {
+  border: 2px solid black;
+  max-width: 500px;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.inputs {
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
 }
 
-#add input {
-  padding: 5px;
-  border: solid #000 3px;
-  border-radius: 3px;
+#submit,
+#inputTitle,
+#inputAuthor {
+  margin-top: 10px;
 }
 
-#addBtn {
-  align-self: flex-end;
-  width: 50px;
-  box-shadow: 2px 2px #000;
+#submit {
+  align-items: flex-end;
 }
 
-.alternateRow{
-  background-color: #dddddd;
+.buttonInput {
+  text-align: right;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -8,47 +8,55 @@ const form = document.getElementsByTagName('form')[0];
 
 const bookTemplate = `<div class="bookRow"><label id="bookEntry">"{book.title}" by {book.author}</label>
     <button type="button" class="remove" id="{book.id}" onclick="removeBook(this.id);">Remove</button>
-    </div><hr>`;
-
+    </div>`;
+/**
+ * Class Definition
+ */
 class BookStore {
   #books;
+
   #itemName;
+
   #booksCollection = [];
+
   constructor(itemName) {
     this.#itemName = itemName;
   }
+
   addBook(author, title) {
     let id = 1;
-    this.#booksCollection =this.getBookStorage();
+    this.#booksCollection = this.getBookStorage();
     if (this.#booksCollection !== null) {
       const ids = this.#booksCollection.map((object) => parseInt(object.id, 10));
       const maxId = Math.max(...ids);
       id = maxId + 1;
     }
-    const objectBook = { 'id': id.toString(), 'author': author, 'title': title };
+    const objectBook = { id: id.toString(), author, title };
     this.setBookStorage(objectBook);
- }
+  }
 
   removeBook(id) {
     if (id > 0) {
       this.#booksCollection = this.getBookStorage();
-      const booksResult = this.#booksCollection.filter((bk) => parseInt(bk.id, 10) !== parseInt(id, 10));
-        this.removeBookStorage(booksResult);
-      }
+      const result = this.#booksCollection.filter((bk) => parseInt(bk.id, 10) !== parseInt(id, 10));
+      this.removeBookStorage(result);
+    }
   }
+
   getBookStorage() {
     this.#books = localStorage.getItem(this.#itemName);
     return (this.#books === null) ? null : JSON.parse(this.#books);
   }
+
   setBookStorage(objectBook) {
-    if (this.#booksCollection===null)
-    {
-      this.#booksCollection=[];  
+    if (this.#booksCollection === null) {
+      this.#booksCollection = [];
     }
     this.#booksCollection.push(objectBook);
     this.#books = JSON.stringify(this.#booksCollection);
     localStorage.setItem(this.#itemName, this.#books);
   }
+
   removeBookStorage(booksResult) {
     if (booksResult.length === 0) {
       localStorage.removeItem(this.#itemName);
@@ -58,13 +66,14 @@ class BookStore {
     }
   }
 }
-
-var bookStore = new BookStore('books');
 /**
-     * Functions
-     */
+ * Object instantiation
+ */
+const bookStore = new BookStore('books');
 
-
+/**
+* Functions
+*/
 function storageAvailable(type) {
   let storage;
   try {
@@ -89,13 +98,13 @@ function storageAvailable(type) {
   }
 }
 
-
 function removeBook(id) {
   if (id > 0) {
     bookStore.removeBook(id);
     window.location.reload();
   }
 }
+
 function setBooksForm() {
   removeBook(-1);
   const booksCollection = bookStore.getBookStorage();
@@ -107,12 +116,12 @@ function setBooksForm() {
       .replace('{book.title}', book.title)
       .replace('{book.author}', book.author)
       .replace('{book.id}', parseInt(book.id, 10))
-      .replace('bookRow', (isRowPair === 0) ? 'bookRow' : 'bookRow alternateRow');
+      .replace('bookRow', (isRowPair === 0) ? 'bookRow alternateRow' : 'bookRow');
   }
   divBooks.innerHTML = allBooks;
 }
 
-/** 
+/**
  * Events
  */
 form.addEventListener('submit', () => {
