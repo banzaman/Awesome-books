@@ -5,6 +5,12 @@ const inputTitle = document.getElementById('inputTitle');
 const inputAuthor = document.getElementById('inputAuthor');
 const divBooks = document.querySelector('.books');
 const form = document.getElementsByTagName('form')[0];
+const link1 = document.getElementById('link1');
+const link2 = document.getElementById('link2');
+const link3 = document.getElementById('link3');
+const section1 = document.getElementById('sectionGrid');
+const section2 = document.getElementById('sectionInput');
+const section3 = document.getElementById('contact');
 
 const bookTemplate = `<div class="bookRow"><label id="bookEntry">"{book.title}" by {book.author}</label>
     <button type="button" class="remove" id="{book.id}" onclick="removeBook(this.id);">Remove</button>
@@ -134,6 +140,14 @@ window.addEventListener('load', () => {
     setBooksForm();
   }
 });
+
+function selectLink(section) {
+  section.classList.remove('deactivate');
+  section.classList.add('activateSection');
+}
+link1.addEventListener('click', selectLink(section1));
+// link2.addEventListener('click', selectLink(section2), false);
+// link3.addEventListener('click', selectLink(section3), false);
 
 //  Date
 const datePlace = document.querySelector('.date');

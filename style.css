@@ -128,11 +128,10 @@ footer {
   margin-bottom: 10%;
 }
 
-.none {
-  display: none;
-}
-
-.block {
+.activate{
   display: block;
 }
-  
+
+.deactivate {
+  display: none;
+}
