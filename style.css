@@ -1,11 +1,12 @@
-.select {
-  padding-top: 20px;
-  text-align: left;
+body {
+  text-align: center;
 }
 
 .bookRow {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .remove {
@@ -13,6 +14,44 @@
 }
 
 hr {
-  max-width: 400px;
-  margin-left: 0;
+  max-width: 100px;
+  margin-top: 20px;
+}
+
+.alternateRow {
+  background-color: #ddd;
+}
+
+.books {
+  border: 2px solid black;
+  max-width: 500px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inputs {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+}
+
+#submit,
+#inputTitle,
+#inputAuthor {
+  margin-top: 10px;
+}
+
+#submit {
+  align-items: flex-end;
+}
+
+.buttonInput {
+  text-align: right;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }

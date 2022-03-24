@@ -9,20 +9,25 @@
 </head>
 <body>
     <header><h1>Awesome Books</h1></header>
-    <section >
+    <section id="sectionGrid">
         <div class="books">
         </div>
+    </section>
+    <section id="sectionInput">
+        <br>
+        <hr>
+        <h1>Add a new book</h1>
         <form method="get">
-            <div class="select"> 
-                <input id="inputTitle" type="text" placeholder="title" maxlength="100" required>
-                <br>
-                <br></div>
-                <input  id="inputAuthor" type="text" placeholder="author" maxlength="100" required>
-                <br><br>
-            <button type="submit" name="add" >Add</button>
+            <div class="formContent">
+                <div class="inputs"> 
+                <input id="inputTitle" type="text" placeholder="Title" maxlength="100" required>
+               <input  id="inputAuthor" type="text" placeholder="Author" maxlength="100" required>
+            </div>
+<div class="buttonInput"><button id="submit" type="submit" name="add" >Add</button></div>
+            
+        </div>
         </form>
     </section>
     <script src="./js/script.js"></script>
 </body>
-
 </html>
