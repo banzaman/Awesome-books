@@ -80,19 +80,6 @@ hr {
   color: initial;
 }
 
-/*
-.navlink1 {
-  font-size: 30px;
-  font-family: cursive;
-  padding: 12px;
-  text-decoration: none;
-  color: initial;
-} */
-
-.navlink:active {
-  color: purple;
-}
-
 .date {
   text-align: right;
   padding: 15px 10px;
@@ -102,10 +89,6 @@ hr {
   margin-top: 5%;
 }
 
-.addbookform,
-.contactsection {
-  margin-top: 10%;
-}
 
 .logo,
 .nav {
@@ -123,10 +106,6 @@ footer {
   position: fixed;
   width: 100%;
   bottom: 0;
-}
-
-.contactsection {
-  margin-bottom: 10%;
 }
 
 .deactivate {
