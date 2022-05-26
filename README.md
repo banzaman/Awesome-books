@@ -14,7 +14,7 @@
 
 - Technologies used: HTML, CSS, Javascript
 
-## Live Demo (if available)
+## Live Demo 
 
 [Live Demo Link]()
 
@@ -41,7 +41,7 @@ To get a local copy up and running follow these simple example steps.
 
 - GitHub: [@NeckerFree](https://github.com/NeckerFree)
 - Twitter: [@ElioCortesM](https://twitter.com/ElioCortesM)
-- LinkedIn: [elionelsoncortes](https://www.linkedin.com/in/elionelsoncortes/)
+- LinkedIn: [elio nelson cortes](https://www.linkedin.com/in/elionelsoncortes/)
 
 ## 🤝 Contributing
 
