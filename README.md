@@ -12,7 +12,7 @@
 
 ## Built With
 
-- Technologies used: HTML, CSS, Javascript
+- Technologies used: HTML, CSS, JAVASCRIPT
 
 ## Live Demo 
 
