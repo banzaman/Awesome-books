@@ -24,7 +24,7 @@
 To get a local copy up and running follow these simple example steps.
 
 ### Setup
-- Click the green `Code` button on the repo
+- Click the green `Code` button on the repo.
 - In your local PC, open your terminal in the folder you would like to clone the project.
 - Clone the repo with the command: `git clone (copied link)`; like so: `git clone https://github.com/banzaman/Awesome-books`
 - On the terminal, navigate into the directory like so: `cd Awesome-books`
@@ -41,7 +41,7 @@ To get a local copy up and running follow these simple example steps.
 
 - GitHub: [@NeckerFree](https://github.com/NeckerFree)
 - Twitter: [@ElioCortesM](https://twitter.com/ElioCortesM)
-- LinkedIn: [elio nelson cortes](https://www.linkedin.com/in/elionelsoncortes/)
+- LinkedIn: [Elio Nelson Cortes](https://www.linkedin.com/in/elionelsoncortes/)
 
 ## 🤝 Contributing
 
